@@ -13,4 +13,6 @@ router.get("/", controller.getAll)
 
 router.get("/pesquisar/:id", controller.getById)
 
+router.get("/pesquisar", controller.getByNome)
+
 module.exports = router

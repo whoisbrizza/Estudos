@@ -35,7 +35,28 @@ const getById = async (request, response)=>{
     }
 }
 
+//GET que retorna o usuario com nome selecionado
+
+const getByNome = async (request, response)=>{
+    try {
+        let usuariosJson = await dbConnect()
+        let nomeRequest = request.query.nome.toLowerCase()
+
+        let encontraUsuarioPeloNome = usuariosJson.filter(usuario => usuario.nome.toLowerCase().includes(nomeRequest))
+
+        console.log(encontraUsuarioPeloNome)
+
+        if(encontraUsuarioPeloNome == undefined) throw new Error("Usuário não encontrado.")
+
+        response.status(200).send(encontraUsuarioPeloNome)
+
+    } catch (error){
+        response.status(404).json({message: error.message})
+    }
+}
+
 module.exports ={
     getAll,
-    getById
+    getById,
+    getByNome
 }
