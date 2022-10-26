@@ -1,5 +1,5 @@
 const app = require("./src/app")
 
 app.listen(3000, ()=>{
-    console.log("Servidor OK!")
+    console.log("Servidor MVC OK!")
 })
